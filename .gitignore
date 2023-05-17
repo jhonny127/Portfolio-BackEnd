@@ -1,9 +1,5 @@
 HELP.md
-<<<<<<< HEAD
 ##target/
-=======
-target/
->>>>>>> f3c89a7 (Se agraga el dockerfile)
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
