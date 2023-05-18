@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,19 +54,20 @@ public class PersonaController {
         impPersonaService.delete(id);        
         return new ResponseEntity(new Mensaje("ID eliminada"), HttpStatus.OK);
     }*/
-    /*
+    
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody PersonaDto personadto){
-        if(StringUtils.isBlank(personadto.getNombreE()))
+        if(StringUtils.isBlank(personadto.getNombre()))
             return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
         if(impPersonaService.existsByNombre(personadto.getNombre()))
             return new ResponseEntity(new Mensaje("Esa experiencia existe"),HttpStatus.BAD_REQUEST);
         
-        Persona persona = new Persona(personadto.getNombre(), personadto.getDescripcion());
+        Persona persona = new Persona(personadto.getNombre(), personadto.getApellido(),
+                personadto.getTitulo(), personadto.getSobreMi(), personadto.getImg(), personadto.getBanner());
         impPersonaService.save(persona);
         
         return new ResponseEntity(new Mensaje("Experiencia agregada"), HttpStatus.OK);
-    }*/
+    }
     
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody PersonaDto personadto){
